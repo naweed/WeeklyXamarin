@@ -20,6 +20,7 @@
     <PackageReference Include="Prism.Unity.Forms" Version="7.2.0.1422" />
     <PackageReference Include="Prism.Unity.Extensions" Version="7.2.0.1054" />
     <PackageReference Include="Resizetizer.NT" Version="0.2.0" />
+    <PackageReference Include="MonkeyCache.FileStore" Version="1.3.0" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
@@ -28,8 +29,27 @@
     <Folder Include="Resources\" />
     <Folder Include="Resources\Fonts\" />
     <Folder Include="Resources\Images\" />
+    <Folder Include="Services\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\WeeklyXamarin.Framework\WeeklyXamarin.Framework.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Resources\Fonts\IBMPlexSans-Light.ttf" />
+    <None Remove="Resources\Fonts\IBMPlexSans-Medium.ttf" />
+    <None Remove="Resources\Fonts\IBMPlexSans-Regular.ttf" />
+    <None Remove="Resources\Images\icnBack.png" />
+    <None Remove="Resources\Images\icnClose.png" />
+    <None Remove="Resources\Images\icnHamburger.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Fonts\IBMPlexSans-Light.ttf" />
+    <EmbeddedResource Include="Resources\Fonts\IBMPlexSans-Medium.ttf" />
+    <EmbeddedResource Include="Resources\Fonts\IBMPlexSans-Regular.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <SharedImage Include="Resources\Images\icnBack.png" BaseSize="96,96" />
+    <SharedImage Include="Resources\Images\icnClose.png" BaseSize="42,42" />
+    <SharedImage Include="Resources\Images\icnHamburger.png" BaseSize="40,40" />
   </ItemGroup>
 </Project>

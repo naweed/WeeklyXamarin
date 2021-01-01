@@ -1,0 +1,97 @@
+﻿using System;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Text;
+using System.Threading.Tasks;
+using MonkeyCache;
+using MonkeyCache.FileStore;
+using Newtonsoft.Json;
+using WeeklyXamarin.Framework.Exceptions;
+using WeeklyXamarin.Framework.Extensions;
+using Xamarin.Essentials;
+
+namespace WeeklyXamarin.Framework.Services
+{
+    public class RestServiceBase
+    {
+        private HttpClient _httpClient;
+        private IBarrel _cacheBarrel;
+
+        public RestServiceBase(string apiBaseUrl, IBarrel cacheBarrel)
+        {
+            _httpClient = new HttpClient()
+            {
+                BaseAddress = new Uri(apiBaseUrl)
+            };
+
+            _httpClient.DefaultRequestHeaders.Accept.Clear();
+            _httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+            this._cacheBarrel = cacheBarrel;
+
+        }
+
+        protected async Task<T> GetAsync<T>(string resource, Xamarin.Essentials.NetworkAccess networkAccess, int cacheDuration = 24)
+        {
+            //Get Json data (from Cache or Web)
+            var json = await GetJsonAsync(resource, networkAccess, cacheDuration);
+
+            //Return the result
+            return JsonConvert.DeserializeObject<T>(json);
+
+        }
+
+        private async Task<string> GetJsonAsync(string resource, Xamarin.Essentials.NetworkAccess networkAccess, int cacheDuration = 24)
+        {
+            var cleanCacheKey = resource.CleanCacheKey();
+
+            //Try Get data from Cache
+            var cachedData = _cacheBarrel.Get<string>(cleanCacheKey);
+
+            if (cacheDuration > 0 && cachedData != null)
+            {
+                //If the cached data is still valid
+                if (!_cacheBarrel.IsExpired(cleanCacheKey))
+                    return cachedData;
+            }
+
+            //Check for internet connection and return cached data if possible
+            if (networkAccess != NetworkAccess.Internet)
+            {
+                if (cachedData != null)
+                {
+                    return cachedData;
+                }
+                else
+                {
+                    throw new InternetConnectionException();
+                }
+            }
+
+            //No Cache Found, or Cached data was not required, or Internet connection is also available
+            //Extract response from URI
+            var response = await _httpClient.GetAsync(new Uri(_httpClient.BaseAddress, resource));
+
+            response.EnsureSuccessStatusCode();
+
+            //Read Response
+            string json = await response.Content.ReadAsStringAsync();
+
+            //Save to Cache if required
+            if (cacheDuration > 0)
+            {
+                try
+                {
+                    _cacheBarrel.Add(cleanCacheKey, json, TimeSpan.FromHours(cacheDuration));
+                }
+                catch { }
+            }
+
+            //Return the result
+            return json;
+
+        }
+
+
+    }
+}

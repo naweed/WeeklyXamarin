@@ -1,6 +1,14 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="WeeklyXamarin.Views.HomePage">
-    <ContentPage.Content>
+<views:PageBase
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:views="clr-namespace:WeeklyXamarin.Views"
+    PageTitle="{Binding Title}"
+    PageMode="Menu"
+    x:Class="WeeklyXamarin.Views.HomePage">
+
+    <views:PageBase.PageContent>
         <Label Text="Hello" />
-    </ContentPage.Content>
-</ContentPage>
+    </views:PageBase.PageContent>
+
+</views:PageBase>

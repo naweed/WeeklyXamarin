@@ -5,7 +5,7 @@ using Xamarin.Forms;
 
 namespace WeeklyXamarin.Views
 {
-    public partial class HomePage : ContentPage
+    public partial class HomePage : PageBase
     {
         public HomePage()
         {

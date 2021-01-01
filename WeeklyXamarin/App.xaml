@@ -3,8 +3,59 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:prism="clr-namespace:Prism.Unity;assembly=Prism.Unity.Forms"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
     x:Class="WeeklyXamarin.App">
     <prism:PrismApplication.Resources>
 
+        <!-- Colors -->
+        <Color x:Key="PageBackgroundColor">#4D7DD3</Color>
+        <Color x:Key="PrimaryColor">#4D7DD3</Color>
+        <Color x:Key="ContentBackgroundColor">#F2F6FA</Color>
+        <Color x:Key="DarkTextColor">#00133D</Color>
+        <Color x:Key="LightTextColor">#F2F6FA</Color>
+
+        <!-- Content Page Style -->
+        <Style TargetType="ContentPage" ApplyToDerivedTypes="True">
+            <Setter Property="NavigationPage.HasNavigationBar" Value="False" />
+            <Setter Property="BackgroundColor" Value="{StaticResource PageBackgroundColor}" />
+        </Style>
+
+        <!-- Grid Styles -->
+        <Style TargetType="Grid">
+            <Setter Property="Padding" Value="0" />
+            <Setter Property="Margin" Value="0" />
+            <Setter Property="RowSpacing" Value="0" />
+            <Setter Property="ColumnSpacing" Value="0" />
+            <Setter Property="VerticalOptions" Value="FillAndExpand" />
+            <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+            <Setter Property="BackgroundColor" Value="Transparent" />
+        </Style>
+
+        <!-- CollectionView Styles -->
+        <Style TargetType="CollectionView">
+            <Setter Property="Margin" Value="0" />
+            <Setter Property="VerticalOptions" Value="FillAndExpand" />
+            <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+            <Setter Property="ItemSizingStrategy" Value="MeasureFirstItem" />
+            <Setter Property="BackgroundColor" Value="Transparent" />
+        </Style>
+
+        <!-- Button Styles -->
+        <Style TargetType="ImageButton" x:Key="IconButtonStyle">
+            <Setter Property="HeightRequest" Value="32" />
+            <Setter Property="WidthRequest" Value="32" />
+            <Setter Property="Padding" Value="{OnPlatform Android=4, iOS=4}" />
+            <Setter Property="BackgroundColor" Value="Transparent" />
+            <Setter Property="Margin" Value="12,6" />
+            <Setter Property="Aspect" Value="AspectFit" />
+        </Style>
+
+        <!-- Text/Label Styles -->
+        <Style TargetType="Label" x:Key="PageHeaderTextStyle">
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="TextColor" Value="{StaticResource LightTextColor}" />
+            <Setter Property="FontFamily" Value="MediumFont" />
+            <Setter Property="LineBreakMode" Value="TailTruncation" />
+        </Style>
     </prism:PrismApplication.Resources>
 </prism:PrismApplication>

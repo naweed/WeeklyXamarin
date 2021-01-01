@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+    prism:ViewModelLocator.AutowireViewModel="True"    
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    ios:Page.PrefersHomeIndicatorAutoHidden="true"
+    x:Class="WeeklyXamarin.Views.PageBase">
+    <ContentPage.Content>
+       <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition x:Name="StatusRowDefinition" Height="0" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <!-- Grid to contain Page Content -->
+            <Grid x:Name="PageContentGrid"
+                  Grid.Row="2"
+                  BackgroundColor="{StaticResource ContentBackgroundColor}"
+                  Margin="0,8,0,0"/>
+
+                        
+            <!-- Page Header -->
+            <Grid x:Name="BaseHeaderGrid"
+                  Grid.Row="1"
+                  ColumnDefinitions="50,*,50">
+
+                <!-- Icons for Left Side -->
+                <!-- TODO -->
+                <ImageButton 
+                    x:Name="HamburgerButton"
+                    Source="icnHamburger.png"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Start"
+                    Command="{Binding HamburgerCommand}"   
+                    Style="{StaticResource IconButtonStyle}"
+                    Grid.Column="0" />
+
+                <ImageButton 
+                    x:Name="NavigateBackButton"
+                    Source="icnBack.png"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Start"
+                    Command="{Binding NavigateBackCommand}"   
+                    Style="{StaticResource IconButtonStyle}"
+                    Grid.Column="0" />
+
+
+                <ImageButton 
+                    x:Name="CloseButton"
+                    Source="icnClose.png"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Start"
+                    Command="{Binding CloseCommand}"
+                    Style="{StaticResource IconButtonStyle}"
+                    Grid.Column="0" />
+
+                <!-- Icons for Right Side -->
+                <Grid 
+                    x:Name="PageIconsGrid"
+                    Grid.Column="2"
+                    VerticalOptions="FillAndExpand"
+                    HorizontalOptions="FillAndExpand" />
+
+
+                <!-- Page Header Label -->
+                <Frame
+                    Padding="20,4"
+                    Margin="2,0"
+                    VerticalOptions="Center"
+                    HeightRequest="26"
+                    HorizontalOptions="Center"
+                    Grid.Column="1"
+                    BackgroundColor="{StaticResource PrimaryColor}"
+                    CornerRadius="17"
+                    HasShadow="False"
+                    BorderColor="White">
+                    <Label
+                        x:Name="TitleLabel"
+                        VerticalOptions="Center" 
+                        HorizontalOptions="FillAndExpand"
+                        HorizontalTextAlignment="Center"
+                        VerticalTextAlignment="Center"
+                        Style="{StaticResource PageHeaderTextStyle}"
+                        TextColor="White">
+                        <Label.Margin>
+                            <OnPlatform x:TypeArguments="Thickness">
+                                <On Platform="iOS">0,0,0,-2</On>
+                                <On Platform="Android">0,0,0,0</On>
+                            </OnPlatform>
+                        </Label.Margin>
+                    </Label>
+                </Frame>
+                
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
