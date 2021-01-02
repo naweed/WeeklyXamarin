@@ -14,5 +14,6 @@
     <Folder Include="Services\" />
     <Folder Include="Extensions\" />
     <Folder Include="Exceptions\" />
+    <Folder Include="Models\" />
   </ItemGroup>
 </Project>

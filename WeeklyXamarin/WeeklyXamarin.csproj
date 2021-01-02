@@ -30,6 +30,7 @@
     <Folder Include="Resources\Fonts\" />
     <Folder Include="Resources\Images\" />
     <Folder Include="Services\" />
+    <Folder Include="Controls\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\WeeklyXamarin.Framework\WeeklyXamarin.Framework.csproj" />

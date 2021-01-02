@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<StackLayout
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="WeeklyXamarin.Controls.LoadingIndicator"
+    Spacing="8"
+    BackgroundColor="Transparent"
+    Padding="8,0"
+    IsVisible="False">
+
+    <ActivityIndicator
+        x:Name="actIndicator"
+        IsRunning="False"
+        WidthRequest="44"
+        HeightRequest="44"
+        Color="{StaticResource DarkTextColor}"
+        Scale="{OnPlatform iOS=1.3, Android=1.0}" />
+    
+    <Label
+        x:Name="lblLoadingText"        
+        HorizontalOptions="Center"
+        FontSize="12"
+        TextColor="{StaticResource DarkTextColor}"
+        FontFamily="RegularFont"
+        HorizontalTextAlignment="Center" />
+
+</StackLayout>

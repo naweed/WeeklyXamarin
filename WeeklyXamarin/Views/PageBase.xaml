@@ -19,7 +19,8 @@
             <Grid x:Name="PageContentGrid"
                   Grid.Row="2"
                   BackgroundColor="{StaticResource ContentBackgroundColor}"
-                  Margin="0,8,0,0"/>
+                  Margin="0,8,0,0"
+                  Padding="12,12,12,0"/>
 
                         
             <!-- Page Header -->

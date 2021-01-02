@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<StackLayout
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="WeeklyXamarin.Controls.ErrorIndicator"
+    IsVisible="False">
+    <Image
+        Source="{Binding ErrorImage, Mode=OneWay}"
+        HorizontalOptions="Center"
+        WidthRequest="64"
+        HeightRequest="64"
+        Aspect="AspectFit"
+        Margin="64,0"/>
+
+    <Label
+        Text="Uh-Oh!"
+        Style="{StaticResource DisplayBoldTextLarge}"
+        HorizontalOptions="Center"
+        HorizontalTextAlignment="Center"
+        Margin="24,0"/>
+
+    <Label
+        Text="{Binding ErrorMessage, Mode=OneWay}"
+        Style="{StaticResource DisplayTextSmall}"
+        HorizontalOptions="Center"
+        HorizontalTextAlignment="Center"
+        Margin="16,0"/>
+</StackLayout>

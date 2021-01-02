@@ -16,8 +16,9 @@ namespace WeeklyXamarin.Framework.Services
     {
         private HttpClient _httpClient;
         private IBarrel _cacheBarrel;
+        
 
-        public RestServiceBase(string apiBaseUrl, IBarrel cacheBarrel)
+        protected RestServiceBase(string apiBaseUrl, IBarrel cacheBarrel)
         {
             _httpClient = new HttpClient()
             {
@@ -89,7 +90,6 @@ namespace WeeklyXamarin.Framework.Services
 
             //Return the result
             return json;
-
         }
 
 

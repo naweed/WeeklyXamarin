@@ -42,7 +42,7 @@ namespace WeeklyXamarin
         {
             //Initialze MonkeyCache
             ////TODO: Not the best place to do this. Need to figure out how to set this in App Initialization (rather than Containers Registration)
-            Barrel.ApplicationId = "XGENO.WeeklyXamarin";
+            Barrel.ApplicationId = Constants.BarrelApplicationId;
 
             //Navigation Service
             containerRegistry.RegisterForNavigation<NavigationPage>();

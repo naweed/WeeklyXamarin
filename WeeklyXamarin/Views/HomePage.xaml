@@ -3,12 +3,32 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:views="clr-namespace:WeeklyXamarin.Views"
+    xmlns:controls="clr-namespace:WeeklyXamarin.Controls"
     PageTitle="{Binding Title}"
     PageMode="Menu"
     x:Class="WeeklyXamarin.Views.HomePage">
 
     <views:PageBase.PageContent>
-        <Label Text="Hello" />
+        <Grid>
+            <!-- Error Message -->
+            <controls:ErrorIndicator
+                VerticalOptions="Center"
+                HorizontalOptions="Fill"
+                IsError="{Binding IsErrorState, Mode=OneWay}">
+                
+            </controls:ErrorIndicator>
+
+            <!-- Main Content -->
+
+
+            <!-- Busy Indicator -->
+            <controls:LoadingIndicator
+                IsBusy="{Binding IsBusy, Mode=OneWay}"
+                LoadingText="{Binding LoadingText, Mode=OneWay}"
+                HorizontalOptions="Center"
+                VerticalOptions="Center" />
+
+        </Grid>
     </views:PageBase.PageContent>
 
 </views:PageBase>
