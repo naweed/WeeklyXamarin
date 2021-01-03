@@ -18,9 +18,9 @@ namespace WeeklyXamarin.Models
 
         public void Remove(Article atricle)
         {
-            if (SavedArticles.Any(_artcile => _artcile.Id == atricle.Id))
+            if(SavedArticles.Any(_artcile => _artcile.Id == atricle.Id))
             {
-                SavedArticles.Remove(atricle);
+                SavedArticles.Remove(SavedArticles.Where(s => s.Id == atricle.Id).First());
             }
         }
 

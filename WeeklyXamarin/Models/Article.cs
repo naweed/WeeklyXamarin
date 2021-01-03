@@ -11,7 +11,7 @@ namespace WeeklyXamarin.Models
         public string Title { get; set; }
 
         [JsonProperty("Url")]
-        public Uri Url { get; set; }
+        public string Url { get; set; }
 
         [JsonProperty("Description")]
         public string Description { get; set; }

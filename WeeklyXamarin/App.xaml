@@ -4,6 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:prism="clr-namespace:Prism.Unity;assembly=Prism.Unity.Forms"
     xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:converters="clr-namespace:WeeklyXamarin.Framework.Converters;assembly=WeeklyXamarin.Framework"
     x:Class="WeeklyXamarin.App">
     <prism:PrismApplication.Resources>
 
@@ -72,6 +73,9 @@
             <Setter Property="FontFamily" Value="RegularFont" />
             <Setter Property="LineBreakMode" Value="WordWrap" />
         </Style>
+
+        <!-- Converters -->
+        <converters:InverseBooleanConverter x:Key="cvtInverseBool"/>
 
     </prism:PrismApplication.Resources>
 </prism:PrismApplication>

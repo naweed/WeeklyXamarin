@@ -1,5 +1,9 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentView xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="WeeklyXamarin.Controls.ArticleCell">
+<ContentView
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Name="ArticleViewCell"
+    x:Class="WeeklyXamarin.Controls.ArticleCell">
     <ContentView.Content>
         <Frame
             Padding="16"
@@ -81,6 +85,46 @@
                 </Frame>
 
                 <!-- Share and Bookmark Icons -->
+                <StackLayout
+                    Grid.Row="4"
+                    Orientation="Horizontal"
+                    HorizontalOptions="End"
+                    VerticalOptions="Center"
+                    Grid.Column="1">
+
+                    <!-- Share Icon -->
+                    <ImageButton
+                        Source="icnShare.png"
+                        Margin="8,0,0,0"
+                        VerticalOptions="Center"
+                        Command="{Binding Source={x:Reference ArticleViewCell}, Path=ParentContext.ShareArticleCommand, Mode=OneWay}" CommandParameter="{Binding .}"
+                        Style="{StaticResource IconButtonStyle}"
+                        Padding="4" />
+
+                    <!-- Add Bookmark Icon -->
+                    <ImageButton
+                        Source="icnAddBookmark.png"
+                        Margin="8,0,0,0"
+                        VerticalOptions="Center"
+                        IsVisible="{Binding IsBookmarked, Converter={StaticResource cvtInverseBool}, Mode=OneWay}"
+                        Command="{Binding Source={x:Reference ArticleViewCell}, Path=ParentContext.AddBookmarkCommand, Mode=OneWay}" CommandParameter="{Binding .}"
+                        Style="{StaticResource IconButtonStyle}" />
+
+                    <!-- Remove Bookmark Icon -->
+                    <ImageButton
+                        Source="icnRemoveBookmark.png"
+                        Margin="8,0,0,0"
+                        VerticalOptions="Center"
+                        IsVisible="{Binding IsBookmarked, Mode=OneWay}"
+                        Command="{Binding Source={x:Reference ArticleViewCell}, Path=ParentContext.RemoveBookmarkCommand, Mode=OneWay}" CommandParameter="{Binding .}"
+                        Style="{StaticResource IconButtonStyle}" />
+
+                </StackLayout>
+
+                <!-- Gesture Recognizer to Open the Article -->
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding Source={x:Reference ArticleViewCell}, Path=ParentContext.OpenArticleCommand, Mode=OneWay}" CommandParameter="{Binding .}" />
+                </Grid.GestureRecognizers>
 
             </Grid>
 

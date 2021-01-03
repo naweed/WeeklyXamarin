@@ -42,6 +42,9 @@
     <None Remove="Resources\Images\icnBack.png" />
     <None Remove="Resources\Images\icnClose.png" />
     <None Remove="Resources\Images\icnHamburger.png" />
+    <None Remove="Resources\Images\icnAddBookmark.png" />
+    <None Remove="Resources\Images\icnRemoveBookmark.png" />
+    <None Remove="Resources\Images\icnShare.png" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\Fonts\IBMPlexSans-Light.ttf" />
@@ -52,5 +55,8 @@
     <SharedImage Include="Resources\Images\icnBack.png" BaseSize="96,96" />
     <SharedImage Include="Resources\Images\icnClose.png" BaseSize="42,42" />
     <SharedImage Include="Resources\Images\icnHamburger.png" BaseSize="40,40" />
+    <SharedImage Include="Resources\Images\icnAddBookmark.png" BaseSize="96,96" />
+    <SharedImage Include="Resources\Images\icnRemoveBookmark.png" BaseSize="96,96" />
+    <SharedImage Include="Resources\Images\icnShare.png" BaseSize="96,96" />
   </ItemGroup>
 </Project>
