@@ -5,33 +5,6 @@ using Prism.Mvvm;
 
 namespace WeeklyXamarin.Models
 {
-    public partial class ArticlesList
-    {
-        [JsonProperty("Id")]
-        public string Id { get; set; }
-
-        [JsonProperty("Name")]
-        public string Name { get; set; }
-
-        [JsonProperty("UpdatedTimeStamp")]
-        public DateTime UpdatedTimeStamp { get; set; }
-
-        [JsonProperty("Summary")]
-        public string Summary { get; set; }
-
-        [JsonProperty("Introduction")]
-        public string Introduction { get; set; }
-
-        [JsonProperty("PublishDate")]
-        public DateTimeOffset PublishDate { get; set; }
-
-        [JsonProperty("Curators")]
-        public string Curators { get; set; }
-
-        [JsonProperty("Articles")]
-        public List<Article> Articles { get; set; }
-    }
-
     public partial class Article : BindableBase
     {
         [JsonProperty("Title")]
@@ -62,9 +35,9 @@ namespace WeeklyXamarin.Models
             set => SetProperty(ref _isBookmarked, value);
         }
 
-        public string SearchString
+        public override string ToString()
         {
-            get => $"{Title} {Description} {Author} {Category}".ToLower();
+            return $"{Title} {Description} {Author} {Category}".ToLower();
         }
     }
 }

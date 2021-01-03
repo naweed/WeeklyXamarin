@@ -5,6 +5,7 @@
     x:Class="WeeklyXamarin.Controls.ErrorIndicator"
     IsVisible="False">
     <Image
+        x:Name="imgError"
         Source="{Binding ErrorImage, Mode=OneWay}"
         HorizontalOptions="Center"
         WidthRequest="64"
@@ -14,14 +15,18 @@
 
     <Label
         Text="Uh-Oh!"
-        Style="{StaticResource DisplayBoldTextLarge}"
+        FontSize="14"
+        TextColor="{StaticResource DarkTextColor}"
+        FontFamily="MediumFont"
         HorizontalOptions="Center"
         HorizontalTextAlignment="Center"
         Margin="24,0"/>
 
     <Label
-        Text="{Binding ErrorMessage, Mode=OneWay}"
-        Style="{StaticResource DisplayTextSmall}"
+        x:Name="lblErrorText"
+        FontSize="12"
+        TextColor="{StaticResource DarkTextColor}"
+        FontFamily="RegularFont"
         HorizontalOptions="Center"
         HorizontalTextAlignment="Center"
         Margin="16,0"/>

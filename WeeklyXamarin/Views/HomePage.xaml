@@ -14,12 +14,33 @@
             <controls:ErrorIndicator
                 VerticalOptions="Center"
                 HorizontalOptions="Fill"
-                IsError="{Binding IsErrorState, Mode=OneWay}">
+                IsError="{Binding IsErrorState, Mode=OneWay}"
+                ErrorImage="{Binding ErrorImage, Mode=OneWay}"
+                ErrorText="{Binding ErrorMessage, Mode=OneWay}">
                 
             </controls:ErrorIndicator>
 
-            <!-- Main Content -->
+            <!-- Latest Edition and Articles -->
+            <CollectionView
+                x:Name="lstArticles"
+                ItemSizingStrategy="MeasureAllItems"
+                ItemsSource="{Binding LatestEdition.Articles, Mode=OneWay}">
+                
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout 
+                        Orientation="Vertical"
+                        ItemSpacing="0" />
+                </CollectionView.ItemsLayout>
+                
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <controls:ArticleCell
+                            HorizontalOptions="Fill"
+                            ParentContext="{Binding BindingContext, Source={x:Reference lstArticles}}" />
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
 
+            </CollectionView>
 
             <!-- Busy Indicator -->
             <controls:LoadingIndicator

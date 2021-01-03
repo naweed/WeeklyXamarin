@@ -18,10 +18,10 @@
     
     <Label
         x:Name="lblLoadingText"        
-        HorizontalOptions="Center"
         FontSize="12"
         TextColor="{StaticResource DarkTextColor}"
         FontFamily="RegularFont"
+        HorizontalOptions="Center"        
         HorizontalTextAlignment="Center" />
 
 </StackLayout>

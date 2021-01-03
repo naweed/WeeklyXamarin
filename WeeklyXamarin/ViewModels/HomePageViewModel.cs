@@ -18,11 +18,11 @@ namespace WeeklyXamarin.ViewModels
             set => SetProperty(ref _isRefreshing, value);
         }
 
-        private ArticlesList _latestEditionWithArticles;
-        public ArticlesList LatestEditionWithArticles
+        private Edition _latestEdition;
+        public Edition LatestEdition
         {
-            get => _latestEditionWithArticles;
-            set => SetProperty(ref _latestEditionWithArticles, value);
+            get => _latestEdition;
+            set => SetProperty(ref _latestEdition, value);
         }
 
 
@@ -49,12 +49,12 @@ namespace WeeklyXamarin.ViewModels
                 var editions = await _appDataService.GetEditions();
 
                 //Get Articles for Latest Edition
-                var editionWithArticles = await _appDataService.GetEditionWithArticles(editions.OrderByDescending(e => e.Id).FirstOrDefault().Id);
+                var edition = await _appDataService.GetEditionDetails(editions.OrderByDescending(e => e.Id).FirstOrDefault().Id);
 
                 //Set Bookmark Flag
-                SetBookmarkFlag(editionWithArticles.Articles);
+                SetBookmarkFlag(edition.Articles);
 
-                LatestEditionWithArticles = editionWithArticles;
+                LatestEdition = edition;
 
                 this.DataLoaded = true;
             }

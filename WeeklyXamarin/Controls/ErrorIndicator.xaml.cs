@@ -22,6 +22,37 @@ namespace WeeklyXamarin.Controls
             control.IsVisible = (bool)newValue;
         }
 
+        public static BindableProperty ErrorTextProperty = BindableProperty.Create("ErrorText", typeof(string), typeof(ErrorIndicator), "", BindingMode.OneWay, null, SetErrorText);
+
+        public string ErrorText
+        {
+            get { return (string)this.GetValue(ErrorTextProperty); }
+            set { this.SetValue(ErrorTextProperty, value); }
+        }
+
+        private static void SetErrorText(BindableObject bindable, object oldValue, object newValue)
+        {
+            ErrorIndicator control = bindable as ErrorIndicator;
+
+            control.lblErrorText.Text = (string)newValue;
+        }
+
+        public static BindableProperty ErrorImageProperty = BindableProperty.Create("ErrorImage", typeof(ImageSource), typeof(ErrorIndicator), null, BindingMode.OneWay, null, SetErrorImage);
+
+        public ImageSource ErrorImage
+        {
+            get { return (ImageSource)this.GetValue(ErrorImageProperty); }
+            set { this.SetValue(ErrorImageProperty, value); }
+        }
+
+        private static void SetErrorImage(BindableObject bindable, object oldValue, object newValue)
+        {
+            ErrorIndicator control = bindable as ErrorIndicator;
+
+            control.imgError.Source = (ImageSource)newValue;
+        }
+
+
         public ErrorIndicator()
         {
             InitializeComponent();
