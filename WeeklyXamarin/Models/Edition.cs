@@ -29,5 +29,10 @@ namespace WeeklyXamarin.Models
 
         [JsonProperty("Articles")]
         public List<Article> Articles { get; set; }
+
+        public string EditionNo
+        {
+            get => $"Edition {Id}"; 
+        }
     }
 }

@@ -27,20 +27,62 @@
                 ItemsSource="{Binding LatestEdition.Articles, Mode=OneWay}">
 
                 <CollectionView.Header>
-                    <Grid
-                        BackgroundColor="{StaticResource PageBackgroundColor}"
-                        HorizontalOptions="Fill"
-                        VerticalOptions="StartAndExpand">
+                    <ContentView
+                        Padding="6,0,6,8">
+                        <Frame
+                            Padding="20,16"
+                            VerticalOptions="StartAndExpand"
+                            HorizontalOptions="Fill"
+                            BackgroundColor="{StaticResource PrimaryColor}"
+                            CornerRadius="8"
+                            HasShadow="False"
+                            BorderColor="{StaticResource PrimaryColor}">
 
-                        <StackLayout>
-                            <Label Text="Hello" />
-                            <Label Text="Hello" />
-                            <Label Text="Hello" />
-                        </StackLayout>
+                            <Grid
+                                HorizontalOptions="Fill"
+                                RowDefinitions="Auto,Auto,1,Auto">
+
+                                <!-- Edition Date -->
+                                <Label
+                                    Text="{Binding LatestEdition.EditionNo, Converter={StaticResource cvtStringCase}, ConverterParameter=U}"
+                                    TextTransform="Uppercase"
+                                    Style="{StaticResource DisplayTextHeaderStyle}"
+                                    FontSize="28"
+                                    Margin="0,0,0,0"
+                                    TextColor="White"
+                                    Grid.Row="0" />
+
+                                <Label
+                                    Text="{Binding LatestEdition.PublishDate, StringFormat='{0:MMM dd, yyyy}'}"
+                                    Style="{StaticResource DisplayTextHeaderStyle}"
+                                    FontSize="14"
+                                    Opacity="0.8"
+                                    Margin="0,-2,0,8"
+                                    TextColor="White"
+                                    Grid.Row="1" />
+
+                                <!-- Item Seperator -->
+                                <BoxView
+                                    HeightRequest="1"
+                                    BackgroundColor="White"
+                                    Opacity="0.6"
+                                    Grid.Row="2"
+                                    VerticalOptions="Fill"
+                                    HorizontalOptions="Fill" />
+
+                                <!-- Intro -->
+                                <Label
+                                    Text="{Binding LatestEdition.Introduction}"
+                                    Style="{StaticResource DisplayTextStyle}"
+                                    TextColor="White"
+                                    Margin="0,6,0,0"
+                                    Grid.Row="3" />
+
+                            </Grid>
 
                         
-                    </Grid>
-                    
+                        </Frame>
+                    </ContentView>
                 </CollectionView.Header>
 
                 <CollectionView.Footer>
@@ -57,7 +99,6 @@
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <controls:ArticleCell
-                            Padding="8,8,8,0"
                             HorizontalOptions="Fill"
                             ParentContext="{Binding BindingContext, Source={x:Reference lstArticles}}" />
                     </DataTemplate>

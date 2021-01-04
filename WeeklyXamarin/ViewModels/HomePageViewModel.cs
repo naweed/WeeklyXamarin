@@ -29,7 +29,7 @@ namespace WeeklyXamarin.ViewModels
         public HomePageViewModel(INavigationService navigationService, IPageDialogService dialogService, IAppService appDataService)
             : base(navigationService, dialogService, appDataService)
         {
-            this.Title = "Weekly Xamarin";
+            this.Title = "LATEST ARTICLES";
         }
 
         public override async void OnNavigatedTo(INavigationParameters parameters)

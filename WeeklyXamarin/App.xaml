@@ -76,6 +76,7 @@
 
         <!-- Converters -->
         <converters:InverseBooleanConverter x:Key="cvtInverseBool"/>
+        <converters:StringCaseConverter x:Key="cvtStringCase"/>
 
     </prism:PrismApplication.Resources>
 </prism:PrismApplication>
