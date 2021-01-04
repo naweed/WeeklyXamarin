@@ -25,9 +25,31 @@
                 x:Name="lstArticles"
                 ItemSizingStrategy="MeasureAllItems"
                 ItemsSource="{Binding LatestEdition.Articles, Mode=OneWay}">
-                
+
+                <CollectionView.Header>
+                    <Grid
+                        BackgroundColor="{StaticResource PageBackgroundColor}"
+                        HorizontalOptions="Fill"
+                        VerticalOptions="StartAndExpand">
+
+                        <StackLayout>
+                            <Label Text="Hello" />
+                            <Label Text="Hello" />
+                            <Label Text="Hello" />
+                        </StackLayout>
+
+                        
+                    </Grid>
+                    
+                </CollectionView.Header>
+
+                <CollectionView.Footer>
+                    <ContentView
+                        HeightRequest="60" />
+                </CollectionView.Footer>
+
                 <CollectionView.ItemsLayout>
-                    <LinearItemsLayout 
+                    <LinearItemsLayout                        
                         Orientation="Vertical"
                         ItemSpacing="0" />
                 </CollectionView.ItemsLayout>
@@ -35,6 +57,7 @@
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <controls:ArticleCell
+                            Padding="8,8,8,0"
                             HorizontalOptions="Fill"
                             ParentContext="{Binding BindingContext, Source={x:Reference lstArticles}}" />
                     </DataTemplate>
