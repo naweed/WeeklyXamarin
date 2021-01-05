@@ -45,6 +45,7 @@
     <None Remove="Resources\Images\icnAddBookmark.png" />
     <None Remove="Resources\Images\icnRemoveBookmark.png" />
     <None Remove="Resources\Images\icnShare.png" />
+    <None Remove="Resources\Images\icnSearch.png" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\Fonts\IBMPlexSans-Light.ttf" />
@@ -58,5 +59,6 @@
     <SharedImage Include="Resources\Images\icnAddBookmark.png" BaseSize="96,96" />
     <SharedImage Include="Resources\Images\icnRemoveBookmark.png" BaseSize="96,96" />
     <SharedImage Include="Resources\Images\icnShare.png" BaseSize="96,96" />
+    <SharedImage Include="Resources\Images\icnSearch.png" BaseSize="60,60" />
   </ItemGroup>
 </Project>

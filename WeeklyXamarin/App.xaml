@@ -16,6 +16,8 @@
         <Color x:Key="MediumTextColor">#666666</Color>
         <Color x:Key="LightTextColor">#F2F6FA</Color>
         <Color x:Key="BorderColor">#DDDDDD</Color>
+        <Color x:Key="SearchBarBackgroundColor">#4D7DD3</Color>
+        <Color x:Key="SearchBoxTextColor">#555555</Color>
 
         <!-- Content Page Style -->
         <Style TargetType="ContentPage" ApplyToDerivedTypes="True">
@@ -72,6 +74,16 @@
             <Setter Property="TextColor" Value="{StaticResource DarkTextColor}" />
             <Setter Property="FontFamily" Value="RegularFont" />
             <Setter Property="LineBreakMode" Value="WordWrap" />
+        </Style>
+
+        <!-- SearchBar Styles -->
+        <Style TargetType="SearchBar" x:Key="SearchBarStyle">
+            <Setter Property="FontFamily" Value="RegularFont" />
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="TextColor" Value="{StaticResource SearchBoxTextColor}" />
+            <Setter Property="CancelButtonColor" Value="{StaticResource SearchBoxTextColor}" />
+            <Setter Property="PlaceholderColor" Value="{StaticResource SearchBoxTextColor}" />
+            
         </Style>
 
         <!-- Converters -->

@@ -106,6 +106,36 @@
 
             </CollectionView>
 
+            <!-- Search Box -->
+            <Grid 
+                VerticalOptions="Start"
+                HorizontalOptions="FillAndExpand"
+                Padding="-12,-12,-12,0">
+
+                <StackLayout 
+                    x:Name="BarLayout"
+                    BackgroundColor="{StaticResource SearchBarBackgroundColor}"                    
+                    WidthRequest="0"
+                    HeightRequest="52"
+                    HorizontalOptions="Center"  />
+
+                <Grid 
+                    x:Name="MenuLayout"
+                    HeightRequest="52"  
+                    Opacity="0.0001">
+
+                    <SearchBar 
+                        x:Name="btnSearchArticles"
+                        Placeholder="Search for articles, authors or categories"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="Center"
+                        BackgroundColor="White"
+                        Style="{StaticResource SearchBarStyle}"
+                        SearchButtonPressed="btnSearchArticles_SearchButtonPressed" />
+                </Grid>
+
+            </Grid>
+
             <!-- Busy Indicator -->
             <controls:LoadingIndicator
                 IsBusy="{Binding IsBusy, Mode=OneWay}"
@@ -115,5 +145,16 @@
 
         </Grid>
     </views:PageBase.PageContent>
+
+    <views:PageBase.PageIcons>
+        <!-- Icon for Search -->
+            <ImageButton 
+                x:Name="SearchButton"
+                Source="icnSearch.png"
+                VerticalOptions="Center"
+                HorizontalOptions="End"
+                Clicked="ToggleSearchBar"
+                Style="{StaticResource IconButtonStyle}" />
+    </views:PageBase.PageIcons>
 
 </views:PageBase>
