@@ -4,7 +4,7 @@ using Xamarin.Forms;
 
 namespace WeeklyXamarin.Controls
 {
-    public partial class LoadingIndicator : StackLayout
+    public partial class LoadingIndicator : Frame
     {
         //Bindable Properties
         public static BindableProperty IsBusyProperty = BindableProperty.Create("IsBusy", typeof(bool), typeof(LoadingIndicator), false, BindingMode.OneWay, null, SetIsBusy);

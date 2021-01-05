@@ -33,5 +33,25 @@ namespace WeeklyXamarin.Services
                         
             return articlesResult;
         }
+
+        //Search for articles
+        public async IAsyncEnumerable<Article> SearchArticles(string searchTerm)
+        {
+            //Get all editions
+            var editions = await GetEditions();
+
+            //Get articles for each edition
+            foreach(var edition in editions)
+            {
+                var editionDetails = await GetEditionDetails(edition.Id);
+
+                //Check for Match with Search Term and return the article
+                foreach(var article in editionDetails.Articles)
+                {
+                    if(article.ToString().Contains(searchTerm.ToLower()))
+                        yield return article;
+                }
+            }
+        }
     }
 }

@@ -8,5 +8,6 @@ namespace WeeklyXamarin.Services
     {
         Task<List<Edition>> GetEditions();
         Task<Edition> GetEditionDetails(string editionId);
+        IAsyncEnumerable<Article> SearchArticles(string searchTerm);
     }
 }

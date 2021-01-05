@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
+using Prism.Commands;
 using Prism.Navigation;
 using Prism.Services;
 using WeeklyXamarin.Framework.Exceptions;
 using WeeklyXamarin.Models;
 using WeeklyXamarin.Services;
+using WeeklyXamarin.Views;
 
 namespace WeeklyXamarin.ViewModels
 {
@@ -25,21 +27,25 @@ namespace WeeklyXamarin.ViewModels
             set => SetProperty(ref _latestEdition, value);
         }
 
+        public DelegateCommand<string> SearchArticlesCommand { get; set; }
 
         public HomePageViewModel(INavigationService navigationService, IPageDialogService dialogService, IAppService appDataService)
             : base(navigationService, dialogService, appDataService)
         {
             this.Title = "LATEST ARTICLES";
+
+            SearchArticlesCommand = new DelegateCommand<string>(SearchArticles);
         }
 
         public override async void OnNavigatedTo(INavigationParameters parameters)
         {
+            _bookMarks = null;
             await LoadLatestArticles();
         }
 
         private async Task LoadLatestArticles()
         {
-            this.LoadingText = "Preparing latest Xamarin content.";
+            this.LoadingText = "Preparing latest Xamarin content";
             
             SetDataLodingIndicators(true);
 
@@ -78,6 +84,12 @@ namespace WeeklyXamarin.ViewModels
             }
         }
 
-        
+        //Search Articles
+        private async void SearchArticles(string searchTerm)
+        {
+            await _navigationService.NavigateAsync($"{nameof(SearchResultsPage)}?searchTerm={searchTerm}", useModalNavigation: false);
+
+        }
+
     }
 }

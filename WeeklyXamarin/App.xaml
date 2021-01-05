@@ -11,6 +11,7 @@
         <!-- Colors -->
         <Color x:Key="PageBackgroundColor">#4D7DD3</Color>
         <Color x:Key="PrimaryColor">#4D7DD3</Color>
+        <Color x:Key="DarkColor">#00133D</Color>
         <Color x:Key="ContentBackgroundColor">#DDDDDD</Color>
         <Color x:Key="DarkTextColor">#00133D</Color>
         <Color x:Key="MediumTextColor">#666666</Color>

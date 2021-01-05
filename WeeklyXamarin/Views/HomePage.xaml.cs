@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using WeeklyXamarin.ViewModels;
 using Xamarin.Forms;
 
 namespace WeeklyXamarin.Views
@@ -90,22 +91,19 @@ namespace WeeklyXamarin.Views
 
         private async void btnSearchArticles_SearchButtonPressed(object sender, EventArgs e)
         {
-            //string searchTerm = (btnSearchShows.Text != null ? btnSearchShows.Text.Trim() : "");
+            string searchTerm = (btnSearchArticles.Text != null ? btnSearchArticles.Text.Trim() : "");
 
-            //ToggleActionBarMenu(null, null);
+            ToggleSearchBar(null, null);
 
-            //if (!string.IsNullOrEmpty(searchTerm))
-            //{
-            //    searchTerm = System.Net.WebUtility.HtmlEncode(searchTerm);
+            if (!string.IsNullOrEmpty(searchTerm))
+            {
+                searchTerm = System.Net.WebUtility.HtmlEncode(searchTerm);
 
-            //    (this.BindingContext as DiscoverPageViewModel).SearchShowsCommand.Execute(searchTerm);
-            //}
-            //else
-            //{
-            //    (this.BindingContext as DiscoverPageViewModel).SearchShowsCommand.Execute("");
-            //}
+                (this.BindingContext as HomePageViewModel).SearchArticlesCommand.Execute(searchTerm);
+            }
 
-            //await Task.CompletedTask;
+
+            await Task.CompletedTask;
         }
     }
 }
