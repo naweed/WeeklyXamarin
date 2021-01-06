@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<views:PageBase
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:views="clr-namespace:WeeklyXamarin.Views"
+    xmlns:controls="clr-namespace:WeeklyXamarin.Controls"
+    PageTitle="{Binding Title}"
+    PageMode="Navigate"
+    x:Class="WeeklyXamarin.Views.EditionDetailsPage">
+    <views:PageBase.PageContent>
+        <Grid>
+            <!-- Error Message -->
+            <controls:ErrorIndicator
+                VerticalOptions="Center"
+                HorizontalOptions="Fill"
+                IsError="{Binding IsErrorState, Mode=OneWay}"
+                ErrorImage="{Binding ErrorImage, Mode=OneWay}"
+                ErrorText="{Binding ErrorMessage, Mode=OneWay}">
+                
+            </controls:ErrorIndicator>
+
+            <!-- Edition and Articles -->
+            <CollectionView
+                IsVisible="{Binding DataLoaded, Mode=OneWay}"
+                x:Name="lstArticles"
+                ItemSizingStrategy="MeasureAllItems"
+                ItemsSource="{Binding Edition.Articles, Mode=OneWay}">
+
+                <CollectionView.Header>
+                    <ContentView
+                        Padding="6,0,6,8">
+                        <Frame
+                            Padding="20,16"
+                            VerticalOptions="StartAndExpand"
+                            HorizontalOptions="Fill"
+                            BackgroundColor="{StaticResource PrimaryColor}"
+                            CornerRadius="8"
+                            HasShadow="False"
+                            BorderColor="{StaticResource PrimaryColor}">
+
+                            <Grid
+                                HorizontalOptions="Fill"
+                                RowDefinitions="Auto,Auto,1,Auto">
+
+                                <!-- Edition Date -->
+                                <Label
+                                    Text="{Binding Edition.EditionNo, Converter={StaticResource cvtStringCase}, ConverterParameter=U}"
+                                    TextTransform="Uppercase"
+                                    Style="{StaticResource DisplayTextHeaderStyle}"
+                                    FontSize="28"
+                                    Margin="0,0,0,0"
+                                    TextColor="White"
+                                    Grid.Row="0" />
+
+                                <Label
+                                    Text="{Binding Edition.PublishDate, StringFormat='{0:MMM dd, yyyy}'}"
+                                    Style="{StaticResource DisplayTextHeaderStyle}"
+                                    FontSize="14"
+                                    Opacity="0.8"
+                                    Margin="0,-2,0,8"
+                                    TextColor="White"
+                                    Grid.Row="1" />
+
+                                <!-- Item Seperator -->
+                                <BoxView
+                                    HeightRequest="1"
+                                    BackgroundColor="White"
+                                    Opacity="0.6"
+                                    Grid.Row="2"
+                                    VerticalOptions="Fill"
+                                    HorizontalOptions="Fill" />
+
+                                <!-- Intro -->
+                                <Label
+                                    Text="{Binding Edition.Introduction}"
+                                    Style="{StaticResource DisplayTextStyle}"
+                                    TextColor="White"
+                                    Margin="0,6,0,0"
+                                    Grid.Row="3" />
+
+                            </Grid>
+
+                        
+                        </Frame>
+                    </ContentView>
+                </CollectionView.Header>
+
+                <CollectionView.Footer>
+                    <ContentView
+                        HeightRequest="20" />
+                </CollectionView.Footer>
+
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout                        
+                        Orientation="Vertical"
+                        ItemSpacing="0" />
+                </CollectionView.ItemsLayout>
+                
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <controls:ArticleCell
+                            HorizontalOptions="Fill"
+                            ParentContext="{Binding BindingContext, Source={x:Reference lstArticles}}" />
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+
+            </CollectionView>
+
+            <!-- Busy Indicator -->
+            <controls:LoadingIndicator
+                IsBusy="{Binding IsBusy, Mode=OneWay}"
+                LoadingText="{Binding LoadingText, Mode=OneWay}"
+                HorizontalOptions="Center"
+                VerticalOptions="End"
+                Margin="20,0,20,20" />
+
+        </Grid>
+    </views:PageBase.PageContent>
+</views:PageBase>

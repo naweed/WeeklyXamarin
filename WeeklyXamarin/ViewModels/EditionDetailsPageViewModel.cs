@@ -1,49 +1,55 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Threading.Tasks;
-using Prism.Commands;
 using Prism.Navigation;
 using Prism.Services;
 using WeeklyXamarin.Framework.Exceptions;
 using WeeklyXamarin.Models;
 using WeeklyXamarin.Services;
-using WeeklyXamarin.Views;
 
 namespace WeeklyXamarin.ViewModels
 {
-    public class EditionsPageViewModel : ViewModelBase
+    public class EditionDetailsPageViewModel : ViewModelBase
     {
-        private List<Edition> _editions;
-        public List<Edition> Editions
+        private Edition edition;
+        public Edition Edition
         {
-            get => _editions;
-            set => SetProperty(ref _editions, value);
+            get => edition;
+            set => SetProperty(ref edition, value);
         }
-        public DelegateCommand<Edition> NavigateToEditionDetailsPageCommand { get; set; }
 
 
-        public EditionsPageViewModel(INavigationService navigationService, IPageDialogService dialogService, IAppService appDataService)
+        public EditionDetailsPageViewModel(INavigationService navigationService, IPageDialogService dialogService, IAppService appDataService)
             : base(navigationService, dialogService, appDataService)
         {
-            this.Title = "EDITIONS";
         }
 
         public override async void OnNavigatedTo(INavigationParameters parameters)
         {
-            await LoadEditions();
-            NavigateToEditionDetailsPageCommand = new DelegateCommand<Edition>(NavigateToEditionDetailsPage);
+            if (parameters.ContainsKey("editionId"))
+            {
+                var editionId = parameters["editionId"].ToString();
+
+                this.Title = $"EDITION {editionId}";
+
+                await LoadEdition(editionId);
+            }
         }
 
-        private async Task LoadEditions()
+        private async Task LoadEdition(string editionId)
         {
-            this.LoadingText = "Getting latest editions";
+            this.LoadingText = "Preparing latest Xamarin content";
 
             SetDataLodingIndicators(true);
 
             try
             {
-                Editions = await _appDataService.GetEditions();
+                //Get Edition Details
+                var edition = await _appDataService.GetEditionDetails(editionId);
+
+                //Set Bookmark Flag
+                SetBookmarkFlag(edition.Articles);
+
+                Edition = edition;
 
                 this.DataLoaded = true;
             }
@@ -63,12 +69,6 @@ namespace WeeklyXamarin.ViewModels
             {
                 SetDataLodingIndicators(false);
             }
-        }
-
-        //Navigate to Edition Details Page
-        private async void NavigateToEditionDetailsPage(Edition edition)
-        {
-            await _navigationService.NavigateAsync($"{nameof(EditionDetailsPage)}?editionId={edition.Id}", useModalNavigation: false);
         }
     }
 }

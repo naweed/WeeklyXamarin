@@ -62,7 +62,7 @@
 
                 <!-- Gesture Recognizer to Open the Edition -->
                 <Grid.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding Source={x:Reference EditionViewCell}, Path=ParentContext.NavigateToEditionCommand, Mode=OneWay}" CommandParameter="{Binding .}" />
+                    <TapGestureRecognizer Command="{Binding Source={x:Reference EditionViewCell}, Path=ParentContext.NavigateToEditionDetailsPageCommand, Mode=OneWay}" CommandParameter="{Binding .}" />
                 </Grid.GestureRecognizers>
 
             </Grid>

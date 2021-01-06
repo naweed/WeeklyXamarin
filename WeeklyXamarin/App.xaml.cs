@@ -57,6 +57,7 @@ namespace WeeklyXamarin
             containerRegistry.RegisterForNavigation<SearchResultsPage, SearchResultsPageViewModel>();
             containerRegistry.RegisterForNavigation<BookmarksPage, BookmarksPageViewModel>();
             containerRegistry.RegisterForNavigation<EditionsPage, EditionsPageViewModel>();
+            containerRegistry.RegisterForNavigation<EditionDetailsPage, EditionDetailsPageViewModel>();
         }
 
     }
