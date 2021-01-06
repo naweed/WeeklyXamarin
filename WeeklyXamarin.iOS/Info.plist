@@ -9,7 +9,7 @@
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
-	</array>	
+	</array>
 	<key>MinimumOSVersion</key>
 	<string>11.0</string>
 	<key>UIRequiredDeviceCapabilities</key>

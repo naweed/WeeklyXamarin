@@ -99,15 +99,13 @@ namespace WeeklyXamarin.ViewModels
         //Navigate to Bookmarks Page
         private async void NavigateToBookmarksPage()
         {
-            ////TODO
-            throw new NotImplementedException();
+            await _navigationService.NavigateAsync($"{nameof(BookmarksPage)}", useModalNavigation: false);
         }
 
         //Navigate to Editions Page
         private async void NavigateToEditionsPage()
         {
-            ////TODO
-            throw new NotImplementedException();
+            await _navigationService.NavigateAsync($"{nameof(EditionsPage)}", useModalNavigation: false);
         }
 
 

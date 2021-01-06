@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<views:PageBase
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:views="clr-namespace:WeeklyXamarin.Views"
+    xmlns:controls="clr-namespace:WeeklyXamarin.Controls"
+    PageTitle="{Binding Title}"
+    PageMode="Navigate"
+    x:Class="WeeklyXamarin.Views.BookmarksPage">
+
+    <views:PageBase.PageContent>
+        <Grid>
+            <!-- Error Message -->
+            <controls:ErrorIndicator
+                VerticalOptions="Center"
+                HorizontalOptions="Fill"
+                IsError="{Binding IsErrorState, Mode=OneWay}"
+                ErrorImage="{Binding ErrorImage, Mode=OneWay}"
+                ErrorText="{Binding ErrorMessage, Mode=OneWay}">
+                
+            </controls:ErrorIndicator>
+
+            <!-- Latest Edition and Articles -->
+            <CollectionView
+                x:Name="lstArticles"
+                ItemSizingStrategy="MeasureAllItems"
+                ItemsSource="{Binding Articles, Mode=OneWay}">
+
+                <CollectionView.Footer>
+                    <ContentView
+                        HeightRequest="20" />
+                </CollectionView.Footer>
+
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout                        
+                        Orientation="Vertical"
+                        ItemSpacing="0" />
+                </CollectionView.ItemsLayout>
+                
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <controls:ArticleCell
+                            HorizontalOptions="Fill"
+                            ParentContext="{Binding BindingContext, Source={x:Reference lstArticles}}" />
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+
+            </CollectionView>
+
+            <!-- Busy Indicator -->
+            <controls:LoadingIndicator
+                IsBusy="{Binding IsBusy, Mode=OneWay}"
+                LoadingText="{Binding LoadingText, Mode=OneWay}"
+                HorizontalOptions="Center"
+                VerticalOptions="End"
+                Margin="20,0,20,20" />
+
+        </Grid>
+    </views:PageBase.PageContent>
+
+</views:PageBase>
