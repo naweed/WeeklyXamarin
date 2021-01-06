@@ -34,5 +34,11 @@ namespace WeeklyXamarin.Models
         {
             get => $"Edition {Id}"; 
         }
+
+        public string SummaryDisplay
+        {
+            get => (Summary == "No Edition Summary"? "The latest edition of Weekly Xamarin is out, sharing the latest goodness of Xamarin. Edition summary to be fixed in the data feed." : Summary);
+        }
+
     }
 }

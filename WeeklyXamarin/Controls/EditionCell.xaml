@@ -18,27 +18,15 @@
 
             <Grid
                 RowDefinitions="Auto,1,Auto"
-                ColumnDefinitions="Auto,16,*">
-
-                <!-- Edition Date -->
-                <commoncontrols:DateBadge
-                    Date="{Binding PublishDate}"
-                    Margin="0,3,0,0"
-                    Grid.Row="0"
-                    Grid.RowSpan="3"
-                    Grid.Column="0"
-                    VerticalOptions="Start"
-                    HorizontalOptions="Fill"
-                    WidthRequest="42"
-                    HeightRequest="60" />
-
+                ColumnDefinitions="*,16,Auto">
 
                 <!-- Edition No -->
                 <Label
-                    Margin="0,0,0,8"
+                    Margin="0,0,0,6"
                     Style="{StaticResource DisplayTextHeaderStyle}"
                     Text="{Binding EditionNo, Converter={StaticResource cvtStringCase}, ConverterParameter=U}"
-                    Grid.Column="2"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="3"
                     Grid.Row="0" />
 
                 <!-- Item Seperator -->
@@ -46,18 +34,30 @@
                     HeightRequest="1"
                     BackgroundColor="{StaticResource BorderColor}"
                     Opacity="0.6"
-                    Grid.Column="2"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="3"
                     Grid.Row="1"
                     VerticalOptions="Fill"
                     HorizontalOptions="Fill" />
 
-                <!-- Edition Intro -->
+                <!-- Edition Summary -->
                 <Label
                     Margin="0,8,0,0"
                     Style="{StaticResource DisplayTextStyle}"
-                    Text="{Binding Summary}"
-                    Grid.Column="2"
+                    Text="{Binding SummaryDisplay}"
+                    Grid.Column="0"
                     Grid.Row="2" />
+
+                <!-- Edition Date -->
+                <commoncontrols:DateBadge
+                    Date="{Binding PublishDate}"
+                    Margin="0,8,0,0"
+                    Grid.Row="2"
+                    Grid.Column="2"
+                    VerticalOptions="Start"
+                    HorizontalOptions="Fill"
+                    WidthRequest="42"
+                    HeightRequest="60" />
 
 
                 <!-- Gesture Recognizer to Open the Edition -->
