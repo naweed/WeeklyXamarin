@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Name="EditionViewCell"
+    x:Class="WeeklyXamarin.Controls.EditionCell">
+    <ContentView.Content>
+        <Frame
+            Padding="16"
+            Margin="6"
+            VerticalOptions="StartAndExpand"
+            HorizontalOptions="FillAndExpand"
+            BackgroundColor="White"
+            CornerRadius="8"
+            HasShadow="False"
+            BorderColor="Transparent">
+
+            <Grid
+                RowDefinitions="Auto,Auto,1,Auto">
+
+                <!-- Edition No -->
+                <Label
+                    Margin="0,0,0,8"
+                    Style="{StaticResource DisplayTextHeaderStyle}"
+                    Text="{Binding EditionNo, Converter={StaticResource cvtStringCase}, ConverterParameter=U}"
+                    Grid.Column="0"
+                    Grid.Row="0" />
+
+                <!-- Edition Date -->
+                <Label
+                    Margin="0,0,0,8"
+                    Style="{StaticResource DisplayTextHeaderStyle}"
+                    Text="{Binding PublishDate, StringFormat='{0:MMM dd, yyyy}'}"
+                    FontSize="14"
+                    Opacity="0.8"
+                    Grid.Row="1" />
+
+                <!-- Item Seperator -->
+                <BoxView
+                    HeightRequest="1"
+                    BackgroundColor="{StaticResource BorderColor}"
+                    Opacity="0.6"
+                    Grid.Column="0"
+                    Grid.Row="2"
+                    VerticalOptions="Fill"
+                    HorizontalOptions="Fill" />
+
+                <!-- Edition Intro -->
+                <Label
+                    Margin="0,8,0,0"
+                    Style="{StaticResource DisplayTextStyle}"
+                    Text="{Binding Summary}"
+                    Grid.Row="3" />
+
+
+                <!-- Gesture Recognizer to Open the Edition -->
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding Source={x:Reference EditionViewCell}, Path=ParentContext.NavigateToEditionCommand, Mode=OneWay}" CommandParameter="{Binding .}" />
+                </Grid.GestureRecognizers>
+
+            </Grid>
+
+                
+
+            </Frame>
+    </ContentView.Content>
+</ContentView>

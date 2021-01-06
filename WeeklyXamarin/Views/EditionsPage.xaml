@@ -20,11 +20,11 @@
                 
             </controls:ErrorIndicator>
 
-            <!-- Latest Edition and Articles -->
+            <!-- Editions -->
             <CollectionView
-                x:Name="lstArticles"
+                x:Name="lstEditions"
                 ItemSizingStrategy="MeasureAllItems"
-                ItemsSource="{Binding Articles, Mode=OneWay}">
+                ItemsSource="{Binding Editions, Mode=OneWay}">
 
                 <CollectionView.Footer>
                     <ContentView
@@ -39,9 +39,9 @@
                 
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <controls:ArticleCell
+                        <controls:EditionCell
                             HorizontalOptions="Fill"
-                            ParentContext="{Binding BindingContext, Source={x:Reference lstArticles}}" />
+                            ParentContext="{Binding BindingContext, Source={x:Reference lstEditions}}" />
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
 

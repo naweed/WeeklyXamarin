@@ -20,7 +20,7 @@
                 
             </controls:ErrorIndicator>
 
-            <!-- Latest Edition and Articles -->
+            <!-- Search Results -->
             <CollectionView
                 x:Name="lstArticles"
                 ItemSizingStrategy="MeasureAllItems"
