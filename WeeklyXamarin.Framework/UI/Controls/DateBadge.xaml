@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="WeeklyXamarin.Framework.UI.Controls.DateBadge">
+
+    <ContentView
+        BackgroundColor="{StaticResource BorderColor}"
+        Opacity="0.9"
+        HorizontalOptions="Fill"
+        VerticalOptions="Fill"
+        Padding="1">
+            <Grid
+                ColumnSpacing="0"
+                RowSpacing="0"
+                Margin="0"
+                Padding="0"
+                BackgroundColor="White"
+                HorizontalOptions="Fill"
+                VerticalOptions="Fill"
+                RowDefinitions="14,*,14">
+
+                <!-- Year -->
+                <BoxView
+                    BackgroundColor="{StaticResource PrimaryColor}"
+                    Grid.Row="0"
+                    HorizontalOptions="Fill"
+                    VerticalOptions="Fill" />
+
+                <Label
+                    x:Name="lblYear"
+                    FontSize="10"
+                    FontFamily="MediumFont"
+                    TextColor="White"
+                    Grid.Row="0"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center" />
+
+                <BoxView
+                    BackgroundColor="{StaticResource BorderColor}"
+                    Grid.Row="1"
+                    HeightRequest="1"
+                    VerticalOptions="Start"
+                    HorizontalOptions="Fill"/>
+
+                <!-- Day -->
+                <Label
+                    x:Name="lblDay"
+                    FontSize="18"
+                    FontFamily="MediumFont"
+                    Grid.Row="1"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center" />
+
+                <BoxView
+                    BackgroundColor="{StaticResource BorderColor}"
+                    Grid.Row="1"
+                    HeightRequest="1"
+                    VerticalOptions="End"
+                    HorizontalOptions="Fill"/>
+
+                <!-- Month -->
+                <BoxView
+                    BackgroundColor="{StaticResource PrimaryColor}"
+                    Grid.Row="2"
+                    HorizontalOptions="Fill"
+                    VerticalOptions="Fill" />
+
+                <Label
+                    x:Name="lblMonth"
+                    FontSize="10"
+                    FontFamily="MediumFont"
+                    TextColor="White"
+                    Grid.Row="2"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center" />
+
+            </Grid>
+    </ContentView>
+
+
+</ContentView>
