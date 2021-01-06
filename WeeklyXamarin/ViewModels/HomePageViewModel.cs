@@ -71,6 +71,12 @@ namespace WeeklyXamarin.ViewModels
 
                 //Raise the Event to notify the page of download completion
                 DownloadCompleted?.Invoke(this, new EventArgs());
+
+                //Preload Editions
+                foreach(var preloadEdition in editions.Where(e => e.Id != edition.Id))
+                {
+                    _ = _appDataService.GetEditionDetails(preloadEdition.Id);
+                }
             }
             catch (InternetConnectionException iex)
             {
