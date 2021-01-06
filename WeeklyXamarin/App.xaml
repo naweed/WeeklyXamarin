@@ -11,6 +11,7 @@
         <!-- Colors -->
         <Color x:Key="PageBackgroundColor">#4D7DD3</Color>
         <Color x:Key="PrimaryColor">#4D7DD3</Color>
+        <Color x:Key="LighterBackgroundColor">#3B3B3D</Color>
         <Color x:Key="DarkColor">#00133D</Color>
         <Color x:Key="ContentBackgroundColor">#DDDDDD</Color>
         <Color x:Key="DarkTextColor">#00133D</Color>
@@ -75,6 +76,12 @@
             <Setter Property="TextColor" Value="{StaticResource DarkTextColor}" />
             <Setter Property="FontFamily" Value="RegularFont" />
             <Setter Property="LineBreakMode" Value="WordWrap" />
+        </Style>
+
+        <Style TargetType="Label" x:Key="DisplayTextMicroStyle">
+            <Setter Property="FontSize" Value="10" />
+            <Setter Property="TextColor" Value="{StaticResource DarkTextColor}" />
+            <Setter Property="FontFamily" Value="RegularFont" />
         </Style>
 
         <!-- SearchBar Styles -->

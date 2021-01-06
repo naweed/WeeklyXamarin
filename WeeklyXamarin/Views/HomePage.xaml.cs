@@ -15,6 +15,38 @@ namespace WeeklyXamarin.Views
         public HomePage()
         {
             InitializeComponent();
+
+            (this.BindingContext as HomePageViewModel).DownloadCompleted += HomePage_DownloadCompleted;
+        }
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+
+            (this.BindingContext as HomePageViewModel).DownloadCompleted -= HomePage_DownloadCompleted;
+        }
+
+        private void HomePage_DownloadCompleted(object sender, EventArgs e)
+        {
+            //Show information downloaded. Start showing items.
+            if (!(this.BindingContext as HomePageViewModel).IsErrorState)
+            {
+                if (this.AnimationIsRunning("TransitionAnimation"))
+                    return;
+
+                var parentAnimation = new Animation();
+
+                //Bottom Menu Animation
+                parentAnimation.Add(0, 1, new Animation(v => BottomMenu.TranslationY = v, 60, 0, Easing.CubicIn));
+
+                //Commit the animation
+                parentAnimation.Commit(this, "TransitionAnimation", 16, 1200, null,
+                    (v, c) =>
+                    {
+                        //Action to perform on completion
+                    });
+
+            }
         }
 
         private void ToggleSearchBar(object sender, EventArgs e)

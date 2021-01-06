@@ -15,7 +15,7 @@
     <LangVersion>8.0</LangVersion>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Xamarin.Forms" Version="4.8.0.1821" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.1874" />
     <PackageReference Include="Xamarin.Essentials" Version="1.6.0" />
     <PackageReference Include="Prism.Unity.Forms" Version="7.2.0.1422" />
     <PackageReference Include="Prism.Unity.Extensions" Version="7.2.0.1054" />
@@ -46,6 +46,10 @@
     <None Remove="Resources\Images\icnRemoveBookmark.png" />
     <None Remove="Resources\Images\icnShare.png" />
     <None Remove="Resources\Images\icnSearch.png" />
+    <None Remove="Resources\Images\error.png" />
+    <None Remove="Resources\Images\nointernet.png" />
+    <None Remove="Resources\Images\icnBookmarks.png" />
+    <None Remove="Resources\Images\icnEditions.png" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\Fonts\IBMPlexSans-Light.ttf" />
@@ -60,5 +64,9 @@
     <SharedImage Include="Resources\Images\icnRemoveBookmark.png" BaseSize="96,96" />
     <SharedImage Include="Resources\Images\icnShare.png" BaseSize="96,96" />
     <SharedImage Include="Resources\Images\icnSearch.png" BaseSize="60,60" />
+    <SharedImage Include="Resources\Images\error.png" BaseSize="64,64" />
+    <SharedImage Include="Resources\Images\nointernet.png" BaseSize="64,64" />
+    <SharedImage Include="Resources\Images\icnBookmarks.png" BaseSize="96,96" />
+    <SharedImage Include="Resources\Images\icnEditions.png" BaseSize="96,96" />
   </ItemGroup>
 </Project>

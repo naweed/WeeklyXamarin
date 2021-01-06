@@ -88,7 +88,7 @@
 
                 <CollectionView.Footer>
                     <ContentView
-                        HeightRequest="60" />
+                        HeightRequest="84" />
                 </CollectionView.Footer>
 
                 <CollectionView.ItemsLayout>
@@ -136,6 +136,81 @@
                 </Grid>
 
             </Grid>
+
+
+            <!-- Bottom Menu -->
+            <Frame
+                x:Name="BottomMenu"                
+                IsVisible="{Binding DataLoaded, Mode=OneWay}"   
+                Padding="12,4"
+                Margin="0,0,0,6"
+                HorizontalOptions="Center"
+                VerticalOptions="End"
+                CornerRadius="12"
+                Opacity="0.95"
+                TranslationY="80"
+                HasShadow="False"
+                BackgroundColor="{StaticResource PrimaryColor}">
+
+                <StackLayout
+                    Margin="24,8"
+                    Orientation="Horizontal"
+                    Spacing="40">
+
+                    <!-- Editions Button -->
+                    <StackLayout
+                        Orientation="Vertical"
+                        VerticalOptions="Center"
+                        Spacing="4">
+
+                        <Image
+                            Source="icnEditions.png"
+                            HorizontalOptions="Center"
+                            WidthRequest="26"
+                            HeightRequest="26"
+                            Aspect="AspectFill" />
+
+                        <Label
+                            HorizontalOptions="Center"
+                            Style="{StaticResource DisplayTextMicroStyle}"
+                            TextColor="White"
+                            Text="EDITIONS" />
+
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding NavigateToEditionsPageCommand}" />
+                        </StackLayout.GestureRecognizers>
+
+                    </StackLayout>
+
+
+                    <!-- Bookmarks Button -->
+                    <StackLayout
+                        Orientation="Vertical"
+                        VerticalOptions="Center"
+                        Spacing="4">
+
+                        <Image
+                            Source="icnBookmarks.png"
+                            HorizontalOptions="Center"
+                            WidthRequest="26"
+                            HeightRequest="26"
+                            Aspect="AspectFill" />
+
+                        <Label
+                            HorizontalOptions="Center"
+                            Style="{StaticResource DisplayTextMicroStyle}"
+                            TextColor="White"
+                            Text="BOOKMARKS" />
+
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding NavigateToBookmarksPageCommand}" />
+                        </StackLayout.GestureRecognizers>
+
+                    </StackLayout>
+
+                </StackLayout>
+
+            </Frame>
 
             <!-- Busy Indicator -->
             <controls:LoadingIndicator

@@ -28,6 +28,9 @@ namespace WeeklyXamarin.ViewModels
         }
 
         public DelegateCommand<string> SearchArticlesCommand { get; set; }
+        public DelegateCommand NavigateToEditionsPageCommand { get; set; }
+        public DelegateCommand NavigateToBookmarksPageCommand { get; set; }
+        public event EventHandler DownloadCompleted;
 
         public HomePageViewModel(INavigationService navigationService, IPageDialogService dialogService, IAppService appDataService)
             : base(navigationService, dialogService, appDataService)
@@ -35,6 +38,8 @@ namespace WeeklyXamarin.ViewModels
             this.Title = "LATEST ARTICLES";
 
             SearchArticlesCommand = new DelegateCommand<string>(SearchArticles);
+            NavigateToEditionsPageCommand = new DelegateCommand(NavigateToEditionsPage);
+            NavigateToBookmarksPageCommand = new DelegateCommand(NavigateToBookmarksPage);
         }
 
         public override async void OnNavigatedTo(INavigationParameters parameters)
@@ -63,19 +68,20 @@ namespace WeeklyXamarin.ViewModels
                 LatestEdition = edition;
 
                 this.DataLoaded = true;
+
+                //Raise the Event to notify the page of download completion
+                DownloadCompleted?.Invoke(this, new EventArgs());
             }
             catch (InternetConnectionException iex)
             {
                 this.IsErrorState = true;
                 this.ErrorMessage = "Slow or no internet connection." + Environment.NewLine + "Please check you internet connection and try again.";
-                ////TODO: Add the NoInternet Image
                 ErrorImage = "nointernet.png";
             }
             catch (Exception ex)
             {
                 this.IsErrorState = true;
                 this.ErrorMessage = "Something went wrong. If the problem persists, plz contact support at Apps@xgeno.com with the error message:" + Environment.NewLine + Environment.NewLine + ex.Message;
-                ////TODO: Add the Error Image
                 ErrorImage = "error.png";
             }
             finally
@@ -84,12 +90,26 @@ namespace WeeklyXamarin.ViewModels
             }
         }
 
-        //Search Articles
+        //Search Articles Page
         private async void SearchArticles(string searchTerm)
         {
             await _navigationService.NavigateAsync($"{nameof(SearchResultsPage)}?searchTerm={searchTerm}", useModalNavigation: false);
-
         }
+
+        //Navigate to Bookmarks Page
+        private async void NavigateToBookmarksPage()
+        {
+            ////TODO
+            throw new NotImplementedException();
+        }
+
+        //Navigate to Editions Page
+        private async void NavigateToEditionsPage()
+        {
+            ////TODO
+            throw new NotImplementedException();
+        }
+
 
     }
 }
