@@ -4,7 +4,7 @@
 	<application android:label="Weekly Xamarin" android:theme="@style/MainTheme" android:icon="@mipmap/ic_launcher" android:roundIcon="@mipmap/ic_launcher_round">
 		<meta-data android:name="android.max_aspect" android:value="2.1" />
 	</application>
-<!--    <adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
+	<!--    <adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
         <background android:drawable="@color/ic_launcher_background" />
         <foreground android:drawable="@mipmap/ic_launcher_foreground" />
     </adaptive-icon>-->
