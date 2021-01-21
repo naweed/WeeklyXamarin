@@ -3,7 +3,6 @@ using WeeklyXamarin.ViewModels;
 using Xamarin.Forms;
 using WeeklyXamarin.Framework.UI;
 
-
 namespace WeeklyXamarin.Views
 {
     public partial class PageBase : ContentPage
